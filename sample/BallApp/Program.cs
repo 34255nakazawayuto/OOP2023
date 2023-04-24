@@ -8,6 +8,8 @@ using System.Windows.Forms;
 
 namespace BallApp {
     class Program : Form {
+        Random random = new Random();
+
         int count = 0;
         private Timer moveTimer;    //タイマー用
         private SoccerBall soccerBall;
