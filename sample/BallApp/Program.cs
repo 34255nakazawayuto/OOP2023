@@ -8,14 +8,13 @@ using System.Windows.Forms;
 
 namespace BallApp {
     class Program : Form {
-        Random random = new Random();
 
-        int count = 0;
+        int count =0;
         private Timer moveTimer;    //タイマー用
-        private SoccerBall soccerBall;
+        private TennisBall TennisBall;
         private PictureBox pb;
             
-        private List<SoccerBall> balls = new List<SoccerBall>();    //ボールインスタンス格納用
+        private List<obj> balls = new List<obj>();    //ボールインスタンス格納用
         private List<PictureBox> pbs = new List<PictureBox>();      //表示用
 
         static void Main(string[] args) {
@@ -36,19 +35,20 @@ namespace BallApp {
         //マウスクリック時のイベントハンドラ
         private void Program_MouseClick(object sender, MouseEventArgs e) {
 
-            this.Text = "BallGame"+ ++count;
 
             //ボールインスタンス生成
-            soccerBall = new SoccerBall(e.X - 25, e.Y - 25);
+            TennisBall = new TennisBall(e.X - 25, e.Y - 25);
             pb = new PictureBox();   //画像を表示するコントロール
-            pb.Image = soccerBall.Image;
-            pb.Location = new Point((int)soccerBall.PosX, (int)soccerBall.PosY);　//画像の位置
+            pb.Image = TennisBall.Image;
+            pb.Location = new Point((int)TennisBall.PosX, (int)TennisBall.PosY);　//画像の位置
             pb.Size = new Size(50, 50); //画像の表示サイズ
             pb.SizeMode = PictureBoxSizeMode.StretchImage;  //画像の表示モード
             pb.Parent = this;
 
-            balls.Add(soccerBall);
-            pbs.Add(pb);            
+            balls.Add(TennisBall);
+            pbs.Add(pb);
+
+            this.Text = "BallGame" + +balls.Count;
 
             moveTimer.Start();  //タイマースタート
         }
