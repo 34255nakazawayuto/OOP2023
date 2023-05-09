@@ -29,8 +29,8 @@ namespace ProductSample {
             Console.WriteLine("10日後は" + daysAfter.Day );
 
             //10日前を決める
-            DateTime daysAgo = date - ts1;
-            Console.WriteLine("10日前は" + daysAgo.Day );
+            DateTime daysAgo10 = date - ts1;
+            Console.WriteLine("10日前は" + daysAgo10.Day );
 
 
         }
