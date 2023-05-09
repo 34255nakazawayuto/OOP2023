@@ -21,13 +21,16 @@ namespace ProductSample {
             //DateTime date =new DateTime(2023,5,8);
             DateTime date = DateTime.Today;
 
+            TimeSpan ts1 = new TimeSpan(10, 0, 0, 0);
+
+
             //10日後を決める
-            DateTime daysAfter10 = date.AddDays(10);
-            Console.WriteLine("10日後は" + daysAfter10.Day );
+            DateTime daysAfter = date + ts1;
+            Console.WriteLine("10日後は" + daysAfter.Day );
 
             //10日前を決める
-            DateTime daysAgo10 = date.AddDays(-10);
-            Console.WriteLine("10日前は" + daysAgo10.Day );
+            DateTime daysAgo = date - ts1;
+            Console.WriteLine("10日前は" + daysAgo.Day );
 
 
         }
