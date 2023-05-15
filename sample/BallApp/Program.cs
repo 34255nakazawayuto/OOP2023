@@ -9,12 +9,13 @@ using System.Windows.Forms;
 namespace BallApp {
     class Program : Form {
 
-        int count =0;
+        Bar bar;            //Barインスタンス格納用
+        PictureBox pbBar;   //Bar表示用
+
         private Timer moveTimer;    //タイマー用
-       
-        private PictureBox pb;
-            
-        private List<obj> balls = new List<obj>();    //ボールインスタンス格納用
+
+        //Listコレクション
+        private List<Obj> balls = new List<Obj>();    //ボールインスタンス格納用
         private List<PictureBox> pbs = new List<PictureBox>();      //表示用
 
         static void Main(string[] args) {
@@ -22,54 +23,62 @@ namespace BallApp {
         }
 
         public Program() {
+
+            //フォーム
             this.Size = new Size(800, 600);
             this.BackColor = Color.Green;
-            
+
+            this.Text = "BallGame SoccerBall:0  TennisBall:0";
             this.MouseClick += Program_MouseClick;
             this.KeyDown += Program_KeyDown;
 
+            //Barインスタンス生成
+            bar = new Bar(340, 500);
+            pbBar = new PictureBox();
+            pbBar.Image = bar.Image;
+            pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);
+            pbBar.Size = new Size(150, 10);
+            pbBar.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbBar.Parent = this;
 
-
+            //タイマー生成
             moveTimer = new Timer();
             moveTimer.Interval = 10; //タイマーのインターバル（ms）
             moveTimer.Tick += MoveTimer_Tick;  //デリゲート登録
         }
 
+        //キーが押された時のイベントハンドラ
         private void Program_KeyDown(object sender, KeyEventArgs e) {
-            
+            bar.Move(e.KeyData);
+            pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);
         }
 
         //マウスクリック時のイベントハンドラ
         private void Program_MouseClick(object sender, MouseEventArgs e) {
-            obj ballobj=null;
-            pb = new PictureBox();
-
-
-            if (e.Button == MouseButtons.Left)
-            {
-                ballobj = new SoccerBall(e.X - 25, e.Y - 25);
-                pb.Size = new Size(50, 50);
-            }
-            else if(e.Button==MouseButtons.Right)
-            {
-                ballobj = new TennisBall(e.X - 12, e.Y - 12);
-                pb.Size = new Size(25, 25);
-            }
+            Obj ballObj = null;
+            PictureBox pb = new PictureBox();   //画像を表示するコントロール
 
             //ボールインスタンス生成
+            if (e.Button == MouseButtons.Left)
+            {
+                ballObj = new SoccerBall(e.X - 25, e.Y - 25);
+                pb.Size = new Size(50, 50); //画像の表示サイズ
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                ballObj = new TennisBall(e.X - 12, e.Y - 12);
+                pb.Size = new Size(25, 25); //画像の表示サイズ
+            }
 
-            pb.Image = ballobj.Image;
-            pb.Location = new Point((int)ballobj.PosX, (int)ballobj.PosY);　//画像の位置
-            pb.Size = new Size(50, 50); //画像の表示サイズ
+            pb.Image = ballObj.Image;
+            pb.Location = new Point((int)ballObj.PosX, (int)ballObj.PosY);　//画像の位置
             pb.SizeMode = PictureBoxSizeMode.StretchImage;  //画像の表示モード
             pb.Parent = this;
 
-            
-
-            balls.Add(ballobj);
+            balls.Add(ballObj);
             pbs.Add(pb);
 
-            this.Text = "BallGame" + +balls.Count;
+            this.Text = "BallGame SoccerBall:" + SoccerBall.Count + "  TennisBall:" + TennisBall.Count;
 
             moveTimer.Start();  //タイマースタート
         }
@@ -79,9 +88,12 @@ namespace BallApp {
 
             for (int i = 0; i < balls.Count; i++)
             {
-                balls[i].Move();  //移動
+                balls[i].Move(pbBar, pbs[i]);  //移動
                 pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY); //画像の位置
             }
+
+            //pbBar.Location = new Point((int)balls[0].PosX, (int)bar.PosY);    //画面表示（一つ目のボールのｘ座標と連動して動く）
         }
     }
 }
+
