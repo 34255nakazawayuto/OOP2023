@@ -14,14 +14,14 @@ namespace Exercise03 {
             }
 
         //店舗別売り上げを求める
-        public Dictionary<string, int> GetPerStoreSales() {
+        public Dictionary<string, int> GetPerCategorySales() {
             var dict = new Dictionary<string, int>();
             foreach (var sale in _sales)
             {
                 if (dict.ContainsKey(sale.ProductCategory))
-                    dict[sale.ProductCategory] += sale.Amount; //店名がすでに存在する（売り上げ加算）
+                    dict[sale.ProductCategory] += sale.Amount; //商品カテゴリーがすでに存在する（売り上げ加算）
                 else
-                    dict[sale.ProductCategory] = sale.Amount;  //店名が存在しない（新規格納）
+                    dict[sale.ProductCategory] = sale.Amount;  //商品カテゴリーが存在しない（新規格納）
             }
             return dict;
 
