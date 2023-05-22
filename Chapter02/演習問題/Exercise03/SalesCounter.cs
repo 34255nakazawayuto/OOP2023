@@ -13,7 +13,21 @@ namespace Exercise03 {
             _sales = ReadSales(filePath);
             }
 
-        private static IEnumerable<Sale> ReadSales(string filePath) {
+        //店舗別売り上げを求める
+        public Dictionary<string, int> GetPerStoreSales() {
+            var dict = new Dictionary<string, int>();
+            foreach (var sale in _sales)
+            {
+                if (dict.ContainsKey(sale.ProductCategory))
+                    dict[sale.ProductCategory] += sale.Amount; //店名がすでに存在する（売り上げ加算）
+                else
+                    dict[sale.ProductCategory] = sale.Amount;  //店名が存在しない（新規格納）
+            }
+            return dict;
+
+        }
+            //売り上げデータを読み込み、Saleオブジェクトのリストを返す
+            private  IEnumerable<Sale> ReadSales(string filePath) {
             var sales = new List<Sale>();
             var lines = File.ReadAllLines(filePath);
                 foreach (var line in lines) {
@@ -26,17 +40,6 @@ namespace Exercise03 {
                     sales.Add(sale);
                 }
                 return sales;
-            }
-            //店舗別売り上げを求める
-            public Dictionary<string, int> GetPerStoreSales() {
-                var dict = new Dictionary<string, int>();
-                foreach (var sale in _sales) {
-                    if (dict.ContainsKey(sale.ProductCategory))
-                        dict[sale.ProductCategory] += sale.Amount; //店名がすでに存在する（売り上げ加算）
-                    else
-                        dict[sale.ProductCategory] = sale.Amount;  //店名が存在しない（新規格納）
-                }
-                return dict;
             }
         }
     }
