@@ -27,7 +27,7 @@ namespace Exercise02 {
                 if (string.IsNullOrEmpty(line))
                     break;
                 var index =names.FindIndex(s => s.Equals(line));
-                Console.ReadLine(index);
+                Console.WriteLine(index);
             } while (true);
                 
                 
@@ -40,21 +40,17 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<string> names) {
-        var selected = names.Count(s => s.Contains('o'))
+        var selected = names.Where(s => s.Contains('o'))
                                         .ToArray();
-        foreach (var name in selected)
-            Console.WriteLine(name);
-
-        
-    }
+            foreach (var name in selected)
+                 Console.WriteLine(name);
+        }
 
         private static void Exercise2_4(List<string> names) {
-            var selected = names.Where(s => s.StartsWith("B"));
-
+            var selected = names.Where(s => s.StartsWith("B"))
+                                .Select(s => new { s, s.Length });
             foreach (var item in selected){
                 Console.WriteLine("{0},{1}", item . s , item. Length);
-            }
-            {
 
             }
         }
