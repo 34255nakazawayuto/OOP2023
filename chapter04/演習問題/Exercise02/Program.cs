@@ -36,7 +36,9 @@ namespace Exercise02 {
 
         private static void Exercise2_2(YearMonth[] ymCollection) {
             throw new NotImplementedException();
-            Console.WriteLine(ymCollection);
+            foreach (var ym in ymCollection) {
+                Console.WriteLine(ym);
+            }
         }
 
         static YearMonth FindFirst21C(YearMonth[] yms) {
