@@ -21,12 +21,18 @@ namespace Exercise03 {
             Exercise3_4(text);
             Console.WriteLine("-----");
 
-            Exercise3_5(text);{\rtf1}
+            Exercise3_5(text);
         }
 
         private static void Exercise3_1(string text) {
-            
-        }
+            int count = 0;
+            foreach (char c in text){
+                if (c == ' '){
+                    count++;
+                }
+            }
+            Console.WriteLine(count);
+            }
 
         private static void Exercise3_2(string text) {
             
