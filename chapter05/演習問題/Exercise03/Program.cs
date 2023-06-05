@@ -51,8 +51,12 @@ namespace Exercise03 {
 
         private static void Exercise3_3(string text) {
             var str = text;
+            var count = 0;
             string[] words = str.Split(' ');
-            Console.WriteLine(str);
+            foreach (var item in words) {
+                count++;
+            }
+            Console.WriteLine(count);
         }
 
         private static void Exercise3_4(string text) {
