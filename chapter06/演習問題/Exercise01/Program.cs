@@ -40,21 +40,19 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3(int[] numbers) {
-            var s1 = numbers.ToString();
-            foreach (var number in numbers){
-                
+            var str = numbers .Select(n =>n.ToString());
+            foreach (var s in str){
+                Console.WriteLine(str);
             }
-            
-
-            Console.WriteLine(s1);
         }
-
         private static void Exercise1_4(int[] numbers) {
-         
-        }
-        private static void Exercise1_5(int[] numbers) {
-           
+            foreach (var n in numbers.OrderBy(n => n).Take(3))
+                Console.WriteLine(n);
         }
 
+        private static void Exercise1_5(int[] numbers) {
+            var count = numbers.Distinct().Count(n => n > 10);
+            Console.WriteLine(count);
+        }
     }
 }

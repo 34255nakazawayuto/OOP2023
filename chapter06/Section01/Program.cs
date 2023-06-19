@@ -31,7 +31,7 @@ namespace Section01 {
                 Console.WriteLine("{0} {1}", book.Title, book.Price);
 
             }
-        }
+         }
     }
 }
 
