@@ -36,30 +36,34 @@ namespace Test02 {
         //問題１　合計値を表示
         //　　　　出力結果【618】
         private static void Exercise01(List<int> numbers) {
-
-
-
+            var sum = numbers.Sum();
+            Console.WriteLine(sum);
         }
 
         //問題２　偶数の最大値を表示
         //　　　　出力結果【94】
         private static void Exercise02(List<int> numbers) {
-
+            var max = numbers.Where(b => b % 2 == 0).Max(b => b);
+            Console.WriteLine(max);
 
 
         }
         //問題３　昇順に並べて表示（遅延実行とする）
         //　　　　出力結果【12 14 17 20 31 35 40 48 53 76 87 91 94】
         private static void Exercise03(List<int> numbers) {
-
-
+            var sort = numbers.OrderBy(x => x>x);
+            Console.WriteLine(sort);
 
         }
 
         //問題４　10以上50以下の数字のみを表示（即時実行でも可とする）
         //　　　　出力結果【12 14 20 40 35 31 17 48】
         private static void Exercise04(List<int> numbers) {
-
+            var n = numbers.Where(b => b >= 10).Where(b => b <= 50);
+            foreach (var item in n) ;
+            {
+                Console.WriteLine(n);
+            }
 
 
         }
