@@ -8,8 +8,8 @@ namespace Excercise02 {
     class Program {
         static void Main(string[] args) {
 
-            foreach (var dayofweek in Enum.GetValues(typeof(DayOfWeek)) ){
-
+           // foreach (var dayofweek in Enum.GetValues(typeof(DayOfWeek)) ){
+           var todey
             }
         }
     }
