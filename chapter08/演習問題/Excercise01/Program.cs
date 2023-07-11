@@ -33,12 +33,16 @@ namespace Excercise01 {
             //平成31年　1月15日(火曜日)
             var culture = new CultureInfo("ja-JP");
             culture.DateTimeFormat.Calendar = new JapaneseCalendar();
-            var s3 = dateTime.ToString("ggyy年M月d日(ddd曜日)", culture);
-            Console.WriteLine(s3);
+            var str = dateTime.ToString("ggyy年M月d日(ddd曜日)", culture);
+            Console.WriteLine(str);
 
 
-           // private static void DisplayDatePattern3_2(DateTime dateTime) {
-
+            // private static void DisplayDatePattern3_2(DateTime dateTime) {
+            var culture = new CultureInfo("ja-JP");
+            culture.DateTimeFormat.Calendar = new JapaneseCalendar();
+            var s4 = dateTime.ToString("ggyy年M月d日(dddd)", culture);
+            
+            var str Regex.Replace(datestr, @"0(\d)", "$1"); ~
            // }
         }
     }

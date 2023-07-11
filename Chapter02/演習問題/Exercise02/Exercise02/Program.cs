@@ -7,14 +7,26 @@ using System.Threading.Tasks;
 namespace Exercise02 {
     class Program {
         static void Main(string[] args) {
-            if (args.Length < 3){
+            if (args.Length < 3)
+            {
                 return;
             }
-            if(args.Length >= 1 && args[0] == "-toi"){
-                PrintMeterToInchList(int.Parse(args[1]),int.Parse(args[10]));
+
+            int start = int.Parse(args[1]);
+            int end = int.Parse(args[2]);
+
+            switch (args[0])
+            {
+                case "-tom":
+                    PrintInchToMeterList(start, end);
+                    break;
+
+                case "-toi":
+                    PrintMeterToInchList(start, end);
+                    break;
             }
         }
-        //フィートからメートルへの対応表を出力
+
         private static void PrintInchToMeterList(int start, int stop) {
             for (int inch = start; inch <= stop; inch++)
             {
@@ -23,16 +35,12 @@ namespace Exercise02 {
             }
         }
 
-        //メートルからフィートへの対応表を出力
-        private static void PrintMeterToFeetList(int start, int stop) {
-            for (int meter = 1; meter <= 10; meter++)
+        private static void PrintMeterToInchList(int start, int stop) {
+            for (int meter = start; meter <= stop; meter++)
             {
-                double feet = InchConverter.FromMeter(meter);
-                Console.WriteLine("{0} m = {1:0.0000}ft", meter, feet);
+                double inch = InchConverter.FromMeter(meter);
+                Console.WriteLine("{0} m = {1:0.0000}ft", meter, inch);
             }
         }
-    }
-}
-    }
     }
 }
