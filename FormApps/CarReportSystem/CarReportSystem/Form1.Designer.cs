@@ -28,7 +28,7 @@ namespace CarReportSystem {
             this.label1 = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbAuther = new System.Windows.Forms.ComboBox();
+            this.cbAuthor = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.gbMaker = new System.Windows.Forms.GroupBox();
             this.rbImported = new System.Windows.Forms.RadioButton();
@@ -93,13 +93,13 @@ namespace CarReportSystem {
             this.label2.TabIndex = 2;
             this.label2.Text = "記録者　：";
             // 
-            // cbAuther
+            // cbAuthor
             // 
-            this.cbAuther.FormattingEnabled = true;
-            this.cbAuther.Location = new System.Drawing.Point(109, 151);
-            this.cbAuther.Name = "cbAuther";
-            this.cbAuther.Size = new System.Drawing.Size(200, 20);
-            this.cbAuther.TabIndex = 3;
+            this.cbAuthor.FormattingEnabled = true;
+            this.cbAuthor.Location = new System.Drawing.Point(109, 151);
+            this.cbAuthor.Name = "cbAuthor";
+            this.cbAuthor.Size = new System.Drawing.Size(200, 20);
+            this.cbAuthor.TabIndex = 3;
             // 
             // label3
             // 
@@ -285,6 +285,7 @@ namespace CarReportSystem {
             this.dgvCarReports.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarReports.Size = new System.Drawing.Size(466, 150);
             this.dgvCarReports.TabIndex = 10;
+            this.dgvCarReports.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarReports_CellContentClick);
             // 
             // label10
             // 
@@ -348,6 +349,7 @@ namespace CarReportSystem {
             this.btModifyReport.TabIndex = 11;
             this.btModifyReport.Text = "修正";
             this.btModifyReport.UseVisualStyleBackColor = true;
+            this.btModifyReport.Click += new System.EventHandler(this.btModifyReport_Click);
             // 
             // btDeleteReport
             // 
@@ -359,7 +361,6 @@ namespace CarReportSystem {
             this.btDeleteReport.TabIndex = 11;
             this.btDeleteReport.Text = "削除";
             this.btDeleteReport.UseVisualStyleBackColor = false;
-            this.btDeleteReport.Click += new System.EventHandler(this.btDeleteReport_Click);
             // 
             // menuStrip1
             // 
@@ -439,7 +440,7 @@ namespace CarReportSystem {
             this.Controls.Add(this.label4);
             this.Controls.Add(this.gbMaker);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cbAuther);
+            this.Controls.Add(this.cbAuthor);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.label1);
@@ -465,7 +466,7 @@ namespace CarReportSystem {
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbAuther;
+        private System.Windows.Forms.ComboBox cbAuthor;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox gbMaker;
         private System.Windows.Forms.RadioButton rbImported;
