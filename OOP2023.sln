@@ -123,8 +123,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FormApps", "FormApps", "{79
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarReportSystem", "FormApps\CarReportSystem\CarReportSystem\CarReportSystem.csproj", "{0247A640-7947-4A91-B4F1-B74B35ADB231}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{A61140A1-D39D-41FE-93C9-6D18FAF1E327}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test03", "TestProject\Test03\Test03.csproj", "{1AA2D78D-C379-4BC0-A9FF-032BBD46F7DF}"
 EndProject
 Global
