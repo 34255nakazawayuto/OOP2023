@@ -235,6 +235,20 @@ namespace CarReportSystem {
             toolStripStatusLabel1.Text = dt.ToString("yyyy/MM/dd HH:mm:ss");
 
         }
+
+        private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (sfdCarRepoSave.ShowDialog() == DialogResult.OK){
+
+
+
+            }
+        }
+
+        private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (ofdCarRepo.ShowDialog() == DialogResult.OK){
+
+            }
+        }
     }
 }
 
