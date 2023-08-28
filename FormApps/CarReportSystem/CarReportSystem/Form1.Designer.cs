@@ -72,7 +72,7 @@ namespace CarReportSystem {
             this.btScaleChange = new System.Windows.Forms.Button();
             this.time = new System.Windows.Forms.Timer(this.components);
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.ofdCarRepo = new System.Windows.Forms.OpenFileDialog();
+            this.ofdCarRepoOpen = new System.Windows.Forms.OpenFileDialog();
             this.sfdCarRepoSave = new System.Windows.Forms.SaveFileDialog();
             this.gbMaker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarReports)).BeginInit();
@@ -551,7 +551,7 @@ namespace CarReportSystem {
             // 
             // ofdCarRepo
             // 
-            this.ofdCarRepo.FileName = "openFileDialog1";
+            this.ofdCarRepoOpen.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -654,7 +654,7 @@ namespace CarReportSystem {
         private System.Windows.Forms.Timer time;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.OpenFileDialog ofdCarRepo;
+        private System.Windows.Forms.OpenFileDialog ofdCarRepoOpen;
         private System.Windows.Forms.SaveFileDialog sfdCarRepoSave;
     }
 }
