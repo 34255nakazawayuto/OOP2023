@@ -34,19 +34,16 @@ namespace CarReportSystem {
         //追加ボタンがクリックされた時のイベントハンドラー
         private void btAddReport_Click(object sender, EventArgs e) {
             statasLabelDisp();　//ステータスラベルのテキスト非表示
-            if (cbAuthor.Text.Equals(""))
-            {
+            if (cbAuthor.Text.Equals("")){
                 statasLabelDisp("記録者を入力してください");
                 return;
             }
-            else if (cbCarName.Text.Equals(""))
-            {
+            else if (cbCarName.Text.Equals("")){
                 statasLabelDisp("車名を入力してください");
                 return;
             }
 
-            var carReport = new CarReport
-            {                           //Saleインスタンスを生成
+            var carReport = new CarReport{                           //Saleインスタンスを生成
                 Date = dtpDate.Value,
                 Author = cbAuthor.Text,
                 Maker = getSelectedMaker(),
@@ -90,10 +87,8 @@ namespace CarReportSystem {
 
         //ラジオボタンで選択されているメーカーを返却
         private CarReport.MakerGroup getSelectedMaker() {
-            foreach (var item in gbMaker.Controls)
-            {
-                if (((RadioButton)item).Checked)
-                {
+            foreach (var item in gbMaker.Controls){
+                if (((RadioButton)item).Checked){
                     return (CarReport.MakerGroup)int.Parse(((RadioButton)item).Tag.ToString());
                 }
             }
@@ -102,8 +97,7 @@ namespace CarReportSystem {
 
         //指定したメーカーのラジオボタンをセット
         private void setSelectedMaker(CarReport.MakerGroup makerGroup) {
-            switch (makerGroup)
-            {
+            switch (makerGroup){
                 case CarReport.MakerGroup.トヨタ:
                     rbToyota.Checked = true;
                     break;
@@ -132,13 +126,15 @@ namespace CarReportSystem {
         }
 
         private void btImageOpen_Click(object sender, EventArgs e) {
-            if (ofdImageFileOpen.ShowDialog() == DialogResult.OK)
-            {
+            if (ofdImageFileOpen.ShowDialog() == DialogResult.OK){
                 pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
             }
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            tsInfoText.Text = "";   //情報表示領域のテキストを初期化
+            dgvCarReports.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
+            dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
             btModifyReport.Enabled = false; //修正ボタン無効
             btDeleteReport.Enabled = false; //削除ボタン無効
@@ -162,10 +158,9 @@ namespace CarReportSystem {
                 editItemsClear();
             }
 
-            //レコードの選択時
-            private void dgvCarReports_Click(object sender, EventArgs e) {
-                if (dgvCarReports.Rows.Count != 0)
-                {
+        //レコードの選択時
+        private void dgvCarReports_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if (dgvCarReports.Rows.Count != 0){
                     dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
                     cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
                     setSelectedMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
@@ -179,8 +174,7 @@ namespace CarReportSystem {
             }
             //修正ボタンイベントハンドラ
             private void btModifyReport_Click(object sender, EventArgs e) {
-                if (dgvCarReports.Rows.Count != 0)
-                {
+                if (dgvCarReports.Rows.Count != 0){
                     CarReports[dgvCarReports.CurrentRow.Index].Date = dtpDate.Value;
                     CarReports[dgvCarReports.CurrentRow.Index].Author = cbAuthor.Text;
                     CarReports[dgvCarReports.CurrentRow.Index].Maker = getSelectedMaker();
@@ -205,8 +199,7 @@ namespace CarReportSystem {
             }
 
             private void カラーToolStripMenuItem_Click(object sender, EventArgs e) {
-                if (cdColor.ShowDialog() == DialogResult.OK)
-                {
+                if (cdColor.ShowDialog() == DialogResult.OK){
                     BackColor = cdColor.Color;
                     setting.MainFormColor = cdColor.Color.ToArgb();
                 }
@@ -222,8 +215,7 @@ namespace CarReportSystem {
 
             private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
                 //設定ファイルのシリアル化
-                using (var writer = XmlWriter.Create("settings.xml"))
-                {
+                using (var writer = XmlWriter.Create("settings.xml")){
                     var serializer = new XmlSerializer(setting.GetType());
                     serializer.Serialize(writer, setting);
                 }
@@ -238,8 +230,7 @@ namespace CarReportSystem {
 
         private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
             if (sfdCarRepoSave.ShowDialog() == DialogResult.OK){
-                try
-                {
+                try{
                     //バイナリ形式でシリアル化
                     var bf = new BinaryFormatter();
                     using (FileStream fs = File.Open(sfdCarRepoSave.FileName, FileMode.Create)){
@@ -267,7 +258,7 @@ namespace CarReportSystem {
                         cbAuthor.Items.Clear();
                         cbCarName.Items.Clear();
                         editItemsClear();//入力途中などのデータはすべてクリア
-                        dgvCarReports.Columns[5].Visible
+                        dgvCarReports.Columns[5].Visible = false;
                         //履歴表示
                         foreach (var carReport in CarReports){
                             setCbAuthor(carReport.Author);
