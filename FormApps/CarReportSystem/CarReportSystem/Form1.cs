@@ -132,6 +132,8 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            // TODO: このコード行はデータを 'infosys202326DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportTableTableAdapter.Fill(this.infosys202326DataSet.CarReportTable);
             tsInfoText.Text = "";   //情報表示領域のテキストを初期化
             dgvCarReports.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
             dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
@@ -279,6 +281,13 @@ namespace CarReportSystem {
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void carReportTableBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
+            this.Validate();
+            this.carReportTableBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202326DataSet);
+
         }
     }
 }
