@@ -19,7 +19,7 @@ namespace CarReportSystem {
         private PictureBoxSizeMode mode;
 
         //設定情報保存用オブジェクト
-        Settings setting = new Settings();
+        Settings setting = Settings.getInstans();
 
         public Form1() {
             InitializeComponent();
@@ -289,6 +289,8 @@ namespace CarReportSystem {
             this.tableAdapterManager.UpdateAll(this.infosys202326DataSet);
 
         }
+
+       
     }
 }
 
