@@ -169,14 +169,25 @@ namespace CarReportSystem {
                     setSelectedMaker(dgvCarReports.CurrentRow.Cells[3].Value.ToString());
                     cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
                     tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString();
+
+                if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)){
+
+                }else{
+                    pbCarImage.Image = null;
+
+                }
                     pbCarImage.Image = dgvCarReports.CurrentRow.Cells[6].Value as Image;
 
                     btModifyReport.Enabled = true;     //修正ボタン有効
                     btDeleteReport.Enabled = true;     //削除ボタン有効
                 }
             }
-            //修正ボタンイベントハンドラ
-            private void btModifyReport_Click(object sender, EventArgs e) {
+                            //別のやり方
+        //  pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value) ?
+        //                     ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value) : null;
+
+        //修正ボタンイベントハンドラ
+        private void btModifyReport_Click(object sender, EventArgs e) {
             //if (dgvCarReports.Rows.Count != 0){
                 dgvCarReports.CurrentRow.Cells[1].Value = dtpDate.Value;
                 dgvCarReports.CurrentRow.Cells[2].Value = cbAuthor.Text;
@@ -299,6 +310,9 @@ namespace CarReportSystem {
             ImageConverter imgconv = new ImageConverter();
             Image img = (Image)imgconv.ConvertFrom(b);
             return img;
+            
+  
+ 
         }
 
         // Imageオブジェクトをバイト配列に変換
