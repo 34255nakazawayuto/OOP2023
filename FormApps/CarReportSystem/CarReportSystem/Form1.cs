@@ -43,15 +43,28 @@ namespace CarReportSystem {
                 return;
             }
 
-            var carReport = new CarReport{                           //Saleインスタンスを生成
-                Date = dtpDate.Value,
-                Author = cbAuthor.Text,
-                Maker = getSelectedMaker(),
-                CarName = cbCarName.Text,
-                Report = tbReport.Text,
-                CarImage = pbCarImage.Image,
-            };
-            CarReports.Add(carReport);
+
+            DataRow newRow = infosys202326DataSet.CarReportTable.NewRow();
+
+            newRow[1] = dtpDate.Value;
+            newRow[2] = cbAuthor.Text;
+            newRow[3] = getSelectedMaker();
+            newRow[4] = cbCarName.Text;
+            newRow[5] = tbReport.Text;
+            newRow[6] = ImageToByteArray (pbCarImage.Image);
+
+            infosys202326DataSet.CarReportTable.Rows.Add(newRow);
+            //this.carReportTableTableAdapter.Update(infosys202326DataSet.CarReportTable);
+
+            //var carReport = new CarReport{                           //Saleインスタンスを生成
+            //   Date = dtpDate.Value,
+            //    Author = cbAuthor.Text,
+            //    Maker = getSelectedMaker(),
+            //    CarName = cbCarName.Text,
+            //    Report = tbReport.Text,
+            //    CarImage = pbCarImage.Image,
+            // };
+            //CarReports.Add(carReport);
 
             setCbAuthor(cbAuthor.Text);     //記録者コンボボックスの履歴登録処理
             setCbCarName(cbCarName.Text);   //車名コンボボックスの履歴登録処理
@@ -157,35 +170,17 @@ namespace CarReportSystem {
 
             //削除ボタンイベントハンドラ
             private void btDeleteReport_Click(object sender, EventArgs e) {
-                CarReports.RemoveAt(dgvCarReports.CurrentRow.Index);
-                editItemsClear();
-            }
+            dgvCarReports.Rows.RemoveAt(dgvCarReports.CurrentRow.Index);
+
+            carReportTableTableAdapter.Update(infosys202326DataSet.CarReportTable);
+            editItemsClear();
+        }
 
         //レコードの選択時
         private void dgvCarReports_CellClick(object sender, DataGridViewCellEventArgs e) {
-            if (dgvCarReports.Rows.Count != 0){
-                    dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[1].Value;
-                    cbAuthor.Text = dgvCarReports.CurrentRow.Cells[2].Value.ToString();
-                    setSelectedMaker(dgvCarReports.CurrentRow.Cells[3].Value.ToString());
-                    cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
-                    tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString();
-
-                if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)){
-
-                }else{
-                    pbCarImage.Image = null;
-
-                }
-                    pbCarImage.Image = dgvCarReports.CurrentRow.Cells[6].Value as Image;
-
-                    btModifyReport.Enabled = true;     //修正ボタン有効
-                    btDeleteReport.Enabled = true;     //削除ボタン有効
-                }
+            
             }
-                            //別のやり方
-        //  pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value) ?
-        //                     ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value) : null;
-
+         
         //修正ボタンイベントハンドラ
         private void btModifyReport_Click(object sender, EventArgs e) {
             //if (dgvCarReports.Rows.Count != 0){
