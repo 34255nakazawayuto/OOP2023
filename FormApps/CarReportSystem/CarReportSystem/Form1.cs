@@ -267,67 +267,6 @@ namespace CarReportSystem {
 
         }
 
-        private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (sfdCarRepoSave.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    //バイナリ形式でシリアル化
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(sfdCarRepoSave.FileName, FileMode.Create))
-                    {
-                        bf.Serialize(fs, CarReports);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
-        private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (ofdCarRepoOpen.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    //逆シリアル化でバイナリ形式で取り込む
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read))
-                    {
-                        CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
-                        dgvCarReports.DataSource = null;
-                        dgvCarReports.DataSource = CarReports;
-                        // dgvCarReports.Refresh();
-
-                        //前の履歴消す
-                        cbAuthor.Items.Clear();
-                        cbCarName.Items.Clear();
-                        editItemsClear();//入力途中などのデータはすべてクリア
-                        dgvCarReports.Columns[5].Visible = false;
-                        //履歴表示
-                        foreach (var carReport in CarReports)
-                        {
-                            setCbAuthor(carReport.Author);
-                            setCbCarName(carReport.CarName);
-                        }
-
-                        //別回答
-                        //forearh(var author in CarReports.Select(p=>p.Author)){
-                        //setCbAuthor(author);
-
-                        //forearh(var report in CarReports.Select(p=>p.Report)){
-                        //setCbAuthor(report);
-                        //}
-
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
 
         // バイト配列をImageオブジェクトに変換
         public static Image ByteArrayToImage(byte[] b) {
@@ -355,24 +294,28 @@ namespace CarReportSystem {
 
         }
         //接続ボタンイベントハンドラ
-        private void btConnection_Click(object sender, EventArgs e) {
+        // private void btConnection_Click(object sender, EventArgs e) {
+        // TODO: このコード行はデータを 'infosys202326DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+        //this.carReportTableTableAdapter.Fill(this.infosys202326DataSet.CarReportTable);
+        // dgvCarReports.ClearSelection();//選択解除
+
+        //  foreach (var carReport in infosys202326DataSet.CarReportTable){
+        //      setCbAuthor(carReport.Author);
+        //     setCbCarName(carReport.CarName);
+
+        // }
+        // }
+
+
+        private void 接続ToolStripMenuItem_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202326DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202326DataSet.CarReportTable);
             dgvCarReports.ClearSelection();//選択解除
 
-            foreach (var carReport in infosys202326DataSet.CarReportTable)
-            {
+            foreach (var carReport in infosys202326DataSet.CarReportTable){
                 setCbAuthor(carReport.Author);
                 setCbCarName(carReport.CarName);
-
             }
-        }
-
-
-
-
-        private void dgvCarReports_Validating(object sendeer, EventArgs e) {
-
         }
     }
 }
