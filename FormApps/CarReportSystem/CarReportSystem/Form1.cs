@@ -255,8 +255,7 @@ namespace CarReportSystem {
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
             //設定ファイルのシリアル化
-            using (var writer = XmlWriter.Create("settings.xml"))
-            {
+            using (var writer = XmlWriter.Create("settings.xml")){
                 var serializer = new XmlSerializer(setting.GetType());
                 serializer.Serialize(writer, setting);
             }
@@ -275,9 +274,6 @@ namespace CarReportSystem {
             ImageConverter imgconv = new ImageConverter();
             Image img = (Image)imgconv.ConvertFrom(b);
             return img;
-
-
-
         }
 
         // Imageオブジェクトをバイト配列に変換
@@ -293,7 +289,6 @@ namespace CarReportSystem {
             this.Validate();
             this.carReportTableBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202326DataSet);
-
         }
         //接続ボタンイベントハンドラ
         private void btConnection_Click(object sender, EventArgs e) {
@@ -319,9 +314,21 @@ namespace CarReportSystem {
                 setCbCarName(carReport.CarName);
             }
         }
-
+        //検索機能
         private void tbAuthorSeach_Click(object sender, EventArgs e) {
-            this.carReportTableTableAdapter.FillByAuthor(this.infosys202326DataSet.CarReportTable,tbAuthorSeach.Text);
+            carReportTableTableAdapter.FillByAuthor(this.infosys202326DataSet.CarReportTable,tbAuthorSeach.Text);
+        }
+
+        private void tbCarNameSaech_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByCarName(this.infosys202326DataSet.CarReportTable, tbCarNameSeach.Text);
+        }
+
+        private void dtpDateSeach_Click(object sender, EventArgs e) {
+           carReportTableTableAdapter.FillByDateToDate(this.infosys202326DataSet.CarReportTable, dtpDateSeach.Text, dtpdateSeachFin.Text);
+        }
+
+        private void dtpdateSeachFin_ValueChanged(object sender, EventArgs e) {
+            this.carReportTableTableAdapter.Fill(this.infosys202326DataSet.CarReportTable);
         }
     }
 }
