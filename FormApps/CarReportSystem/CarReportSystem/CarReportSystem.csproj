@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,6 +53,9 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="infosys202326DataSet.cs">
+      <DependentUpon>infosys202326DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="infosys202326DataSet.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -11,6 +11,8 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
@@ -294,17 +296,17 @@ namespace CarReportSystem {
 
         }
         //接続ボタンイベントハンドラ
-        // private void btConnection_Click(object sender, EventArgs e) {
-        // TODO: このコード行はデータを 'infosys202326DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+        private void btConnection_Click(object sender, EventArgs e) {
+        //TODO: このコード行はデータを 'infosys202326DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
         //this.carReportTableTableAdapter.Fill(this.infosys202326DataSet.CarReportTable);
-        // dgvCarReports.ClearSelection();//選択解除
+          //  dgvCarReports.ClearSelection();//選択解除
 
-        //  foreach (var carReport in infosys202326DataSet.CarReportTable){
-        //      setCbAuthor(carReport.Author);
-        //     setCbCarName(carReport.CarName);
+           // foreach (var carReport in infosys202326DataSet.CarReportTable) {
+           //     setCbAuthor(carReport.Author);
+        // setCbCarName(carReport.CarName);
 
-        // }
-        // }
+          //  }
+        }
 
 
         private void 接続ToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -312,10 +314,14 @@ namespace CarReportSystem {
             this.carReportTableTableAdapter.Fill(this.infosys202326DataSet.CarReportTable);
             dgvCarReports.ClearSelection();//選択解除
 
-            foreach (var carReport in infosys202326DataSet.CarReportTable){
+            foreach (var carReport in infosys202326DataSet.CarReportTable) {
                 setCbAuthor(carReport.Author);
                 setCbCarName(carReport.CarName);
             }
+        }
+
+        private void tbAuthorSeach_Click(object sender, EventArgs e) {
+            this.carReportTableTableAdapter.FillByAuthor(this.infosys202326DataSet.CarReportTable,tbAuthorSeach.Text);
         }
     }
 }
