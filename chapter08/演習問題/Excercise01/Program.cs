@@ -42,7 +42,7 @@ namespace Excercise01 {
             culture.DateTimeFormat.Calendar = new JapaneseCalendar();
             var s4 = dateTime.ToString("ggyy年M月d日(dddd)", culture);
             
-            var str Regex.Replace(datestr, @"0(\d)", "$1"); ~
+            var str Regex.Replace(datestr, @"0(\d)", "$1");
            // }
         }
     }

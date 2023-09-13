@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace SampleEnrityFramework.Models {
+namespace SampleEntityFramework.Models {
    public class Author {
         public int Id { get; set; }//Idと書いたら主キー
         [MaxLength(30)]

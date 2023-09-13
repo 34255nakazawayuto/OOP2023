@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 
-namespace SampleEnrityFramework.Models {
+namespace SampleEntityFramework.Models {
     public class BooksDbContext : DbContext {
         // コンテキストは、アプリケーションの構成ファイル (App.config または Web.config) から 'BooksDbContext' 
         // 接続文字列を使用するように構成されています。既定では、この接続文字列は LocalDb インスタンス上
@@ -12,6 +12,7 @@ namespace SampleEnrityFramework.Models {
         // アプリケーション構成ファイルで 'BooksDbContext' 接続文字列を変更してください。
         public BooksDbContext()
             : base("name=BooksDbContext") {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<BooksDbContext, Configuration>());
         }
 
         // モデルに含めるエンティティ型ごとに DbSet を追加します。Code First モデルの構成および使用の
