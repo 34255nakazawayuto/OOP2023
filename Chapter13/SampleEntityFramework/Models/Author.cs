@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace SampleEntityFramework.Models {
-   public class Author {
-        public int Id { get; set; }//Idと書いたら主キー
+    public class Author {
+        public int Id { get; set; }
         [MaxLength(30)]
         [Required]
         public string Name { get; set; }

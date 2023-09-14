@@ -6,7 +6,7 @@ namespace SampleEntityFramework.Models {
     public class BooksDbContext : DbContext {
         // コンテキストは、アプリケーションの構成ファイル (App.config または Web.config) から 'BooksDbContext' 
         // 接続文字列を使用するように構成されています。既定では、この接続文字列は LocalDb インスタンス上
-        // の 'SampleEnrityFramework.Models.BooksDbContext' データベースを対象としています。 
+        // の 'SampleEntityFramework.Models.BooksDbContext' データベースを対象としています。 
         // 
         // 別のデータベースとデータベース プロバイダーまたはそのいずれかを対象とする場合は、
         // アプリケーション構成ファイルで 'BooksDbContext' 接続文字列を変更してください。
