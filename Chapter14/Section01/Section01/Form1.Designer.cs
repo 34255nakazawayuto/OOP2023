@@ -57,7 +57,7 @@ namespace Section01 {
             this.Controls.Add(this.RunWateNotepad);
             this.Controls.Add(this.RunNotepad);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "１４章１節";
             this.ResumeLayout(false);
 
         }
