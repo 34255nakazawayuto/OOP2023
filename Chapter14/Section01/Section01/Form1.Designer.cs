@@ -1,5 +1,5 @@
 ﻿
-namespace Section {
+namespace Section01 {
     partial class Form1 {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -25,37 +25,37 @@ namespace Section {
         /// コード エディターで変更しないでください。
         /// </summary>
         private void InitializeComponent() {
-            this.btRunNotepad = new System.Windows.Forms.Button();
-            this.btRunWaitNotepad = new System.Windows.Forms.Button();
+            this.RunNotepad = new System.Windows.Forms.Button();
+            this.RunWateNotepad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btRunNotepad
+            // RunNotepad
             // 
-            this.btRunNotepad.Location = new System.Drawing.Point(104, 90);
-            this.btRunNotepad.Name = "btRunNotepad";
-            this.btRunNotepad.Size = new System.Drawing.Size(75, 23);
-            this.btRunNotepad.TabIndex = 0;
-            this.btRunNotepad.Text = "RunNotepad";
-            this.btRunNotepad.UseVisualStyleBackColor = true;
-            this.btRunNotepad.Click += new System.EventHandler(this.btRunNotepad_Click);
+            this.RunNotepad.Location = new System.Drawing.Point(99, 91);
+            this.RunNotepad.Name = "RunNotepad";
+            this.RunNotepad.Size = new System.Drawing.Size(110, 39);
+            this.RunNotepad.TabIndex = 0;
+            this.RunNotepad.Text = "RunNotepad";
+            this.RunNotepad.UseVisualStyleBackColor = true;
+            this.RunNotepad.Click += new System.EventHandler(this.RunNotepad_Click);
             // 
-            // btRunWaitNotepad
+            // RunWateNotepad
             // 
-            this.btRunWaitNotepad.Location = new System.Drawing.Point(382, 89);
-            this.btRunWaitNotepad.Name = "btRunWaitNotepad";
-            this.btRunWaitNotepad.Size = new System.Drawing.Size(75, 23);
-            this.btRunWaitNotepad.TabIndex = 1;
-            this.btRunWaitNotepad.Text = "RunWaitNotepad";
-            this.btRunWaitNotepad.UseVisualStyleBackColor = true;
-            this.btRunWaitNotepad.Click += new System.EventHandler(this.btRunWaitNotepad_Click);
+            this.RunWateNotepad.Location = new System.Drawing.Point(381, 91);
+            this.RunWateNotepad.Name = "RunWateNotepad";
+            this.RunWateNotepad.Size = new System.Drawing.Size(113, 39);
+            this.RunWateNotepad.TabIndex = 1;
+            this.RunWateNotepad.Text = "RunWateNotepad";
+            this.RunWateNotepad.UseVisualStyleBackColor = true;
+            this.RunWateNotepad.Click += new System.EventHandler(this.RunWateNotepad_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btRunWaitNotepad);
-            this.Controls.Add(this.btRunNotepad);
+            this.Controls.Add(this.RunWateNotepad);
+            this.Controls.Add(this.RunNotepad);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -64,8 +64,8 @@ namespace Section {
 
         #endregion
 
-        private System.Windows.Forms.Button btRunNotepad;
-        private System.Windows.Forms.Button btRunWaitNotepad;
+        private System.Windows.Forms.Button RunNotepad;
+        private System.Windows.Forms.Button RunWateNotepad;
     }
 }
 
