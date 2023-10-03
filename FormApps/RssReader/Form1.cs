@@ -38,11 +38,10 @@ namespace RssReader {
         }
 
         private void lbRssTitle_Click(object sender, EventArgs e) {
-            object oItem;
+            int oItem;
            oItem = lbRssTitle.SelectedIndex;
-            
-            //コンソールへ出力
-            Console.WriteLine(oItem);
+            wbBrowser.Navigate(ItemDatas[oItem].Link);
+            //wbBrowser.Navigate(ItemDatas[lbRssTitle.SelectedIndex].Link);　模範解答
         }
     }
 }
