@@ -29,6 +29,7 @@ namespace RssReader {
             this.btGet = new System.Windows.Forms.Button();
             this.lbRssTitle = new System.Windows.Forms.ListBox();
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
+            this.btUrl = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbUrl
@@ -68,17 +69,29 @@ namespace RssReader {
             this.wbBrowser.Size = new System.Drawing.Size(701, 453);
             this.wbBrowser.TabIndex = 3;
             // 
+            // btUrl
+            // 
+            this.btUrl.Location = new System.Drawing.Point(821, 256);
+            this.btUrl.Name = "btUrl";
+            this.btUrl.Size = new System.Drawing.Size(92, 37);
+            this.btUrl.TabIndex = 4;
+            this.btUrl.Text = "URL1";
+            this.btUrl.UseVisualStyleBackColor = true;
+            this.btUrl.Click += new System.EventHandler(this.btUrl_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 748);
+            this.ClientSize = new System.Drawing.Size(1010, 775);
+            this.Controls.Add(this.btUrl);
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbRssTitle);
             this.Controls.Add(this.btGet);
             this.Controls.Add(this.tbUrl);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -90,6 +103,7 @@ namespace RssReader {
         private System.Windows.Forms.Button btGet;
         private System.Windows.Forms.ListBox lbRssTitle;
         private System.Windows.Forms.WebBrowser wbBrowser;
+        private System.Windows.Forms.Button btUrl;
     }
 }
 
