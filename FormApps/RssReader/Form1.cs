@@ -51,9 +51,10 @@ namespace RssReader {
             if (lbRssTitle.SelectedIndex == -1) ;
             //wbBrowser.Navigate(ItemDatas[lbRssTitle.SelectedIndex].Link);　模範解答
         }
-        
+
         private void btUrl_Click(object sender, EventArgs e) {
-            
+          
+
         }
     }
 }
