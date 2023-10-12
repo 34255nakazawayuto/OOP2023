@@ -26,13 +26,11 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2() {
-            var book = Library.Books.Max(b => b.Price);
-          
-                Console.WriteLine(book);
-            
-                
-            
-            
+            var books = Library.Books.Max(b => b.Price);
+            var book = Library.Books.Where(b=> books == b.Price);
+            foreach (var f in book){
+                Console.WriteLine(f);
+            }
         }
 
         private static void Exercise1_3() {
@@ -44,16 +42,54 @@ namespace Exercise01 {
             }
         }
         
-private static void Exercise1_4() {
+        private static void Exercise1_4() {
+            var groups = Library.Books
+                                .Join(Library.Categories,
+                                book => book.CategoryId,
+                                Category => Category.Id,
+                                (book, Category) => new {
+                                    book.PublishedYear,
+                                    book.Price,
+                                    book.Title,
+                                    CategoryName = Category.Name,
+                                })
+                                .OrderByDescending(x => x.PublishedYear)
+                                .ThenByDescending(x => x.Price);
 
+            foreach (var item in groups){
+                Console.WriteLine("{0}年{1}円{2}({3})",
+                                    item.PublishedYear,
+                                    item.Price,
+                                    item.Title,
+                                    item.CategoryName
+                                  );
+            }
+            //var groups = Library.Books
+            //                 .GroupBy(b => b.PublishedYear)
+            //                 .OrderBy(g => g.Key)
+            //                 .OrderByDescending(k =>k);
+            //foreach (var g in groups){
+            //    Console.WriteLine($"{g.Key}年");
+            //    foreach (var book in g){
+            //        Console.WriteLine($"  {book}");
+            //    }
+           // }
+            
 
 
         }
 
         private static void Exercise1_5() {
-
-
-
+            var lookup = Library.Books
+                                .Where(b=>b.PublishedYear==2016)
+                                .Join(Library.Categories,
+                                book => book.CategoryId,
+                                Category => Category.Id,
+                                (book, Category) => Category.Name)
+                                .Distinct();
+                             
+            foreach (var book in lookup)
+                Console.WriteLine(book);
         }
 
         private static void Exercise1_6() {
