@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Section01 {
     class Program {
         static void Main(string[] args) {
-            ToLookupSample();
+            GroupBySample2();
 
         }
         //15-2
