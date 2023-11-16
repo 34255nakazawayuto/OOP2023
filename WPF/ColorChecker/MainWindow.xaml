@@ -19,7 +19,21 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <ComboBox x:Name="CombBox" Grid.Column="1" HorizontalAlignment="Left" Margin="10,21,0,0" Grid.Row="4" VerticalAlignment="Top" Width="99" Height="18" Grid.ColumnSpan="2"/>
+            <ComboBox  ItemsSource="{Binding}"  SelectedValue="{Binding Color}" x:Name="CombBox" Grid.Column="1"  Margin="10,21,0,0" Grid.Row="4" VerticalAlignment="Top" Width="99" Height="18" HorizontalAlignment="Left" Grid.ColumnSpan="2" SelectionChanged="CombBox_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black" >
+                                <Border.Background>
+                                    <SolidColorBrush Color="{Binding Color}"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
             <Slider x:Name="slider3" Grid.Column="1" HorizontalAlignment="Left" Margin="10,24,0,0" Grid.Row="2" VerticalAlignment="Top" Width="99" TickPlacement="TopLeft" ValueChanged="slider1_ValueChanged" Maximum="255"/>
             <Slider x:Name="slider2" Grid.Column="1" HorizontalAlignment="Left" Margin="8,26,0,0" VerticalAlignment="Top" Grid.Row="1" AutoToolTipPlacement="BottomRight" Width="101" TickPlacement="TopLeft" ValueChanged="slider1_ValueChanged" Maximum="255"/>
             <TextBlock HorizontalAlignment="Left" Margin="25,26,0,0" TextWrapping="Wrap" Text="R" VerticalAlignment="Top"/>
@@ -31,7 +45,7 @@
             <TextBox Grid.Column="2" HorizontalAlignment="Left" Height="30" Margin="3,18,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="35" Text ="{Binding ElementName=slider3,Path=Value,Mode=TwoWay, StringFormat={}{0:N0}}"/>
         </Grid>
         <Label x:Name="lbColor" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="249" Width="184"/>
-        <Grid HorizontalAlignment="Left" Height="270" Margin="-13,-1,-13,0" VerticalAlignment="Top" Width="618">
+        <Grid HorizontalAlignment="Left" Height="270" Margin="-26,0,0,-1" VerticalAlignment="Top" Width="618">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

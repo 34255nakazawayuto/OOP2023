@@ -8,21 +8,19 @@ namespace SampleUnitConverter {
     //ヤードクラスを表すクラス
     public class ImperialUnit : DistanceUnit{
         private static List<ImperialUnit> units = new List<ImperialUnit>{
-            new ImperialUnit{Name="in",Coefficient=1,},
-            new ImperialUnit{Name="ft",Coefficient=12,},
-            new ImperialUnit{Name="yd",Coefficient=12*3,},
-            new ImperialUnit{Name="ml",Coefficient=12*3*1760,},
+            new ImperialUnit{Name="オンス",Coefficient=1,},
+            new ImperialUnit{Name="ポンド",Coefficient=16,},
         };
         public static ICollection<ImperialUnit> Units { get { return units; } }
 
         /// <summary>
-        /// メートル単位からヤード単位に変換します
+        /// グラム単位からポンド単位に変換します
         /// </summary>
         /// <param name="unit">メートル単位</param>
         /// <param name="value">値</param>
         /// <returns>変換値</returns>
         public double FromMetricUnit(MetricUnit unit, double value) {
-            return (value * unit.Coefficient) / 25.4 / this.Coefficient;
+            return (value * unit.Coefficient) / 28.35 / this.Coefficient;
         }
     }
 }

@@ -259,7 +259,7 @@ namespace CarReportSystem {
             this.cbCarName.Name = "cbCarName";
             this.cbCarName.Size = new System.Drawing.Size(245, 23);
             this.cbCarName.TabIndex = 3;
-            // 
+          
             // label4
             // 
             this.label4.AutoSize = true;
